@@ -1,18 +1,9 @@
 RewriteEngine On
 
-# Impede listagem de diretórios (navegação por URL)
-Options -Indexes
-
-# Configuração de charset
-AddDefaultCharset UTF-8
-
-# Bloqueia acesso a arquivos PHP, exceto os que estão na pasta public
-RewriteCond %{THE_REQUEST} \.php [NC]
-RewriteCond %{REQUEST_URI} !^/public/ [NC]
-RewriteRule .* - [F,L]
-
-# Redireciona todas as requisições que não forem arquivos ou diretórios existentes
-# para a pasta /public, sem alterar a URL no navegador
+# Redirecionamento básico para a pasta public
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ public/$1 [L]
+
+# Impede listagem de diretórios
+Options -Indexes
