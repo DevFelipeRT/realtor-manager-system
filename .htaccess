@@ -1,5 +1,22 @@
 RewriteEngine On
 
-# Redireciona qualquer requisição que não comece com /public para a pasta /public
-RewriteCond %{REQUEST_URI} !^/projetos/realtor-system/public/
-RewriteRule ^(.*)$ /projetos/realtor-system/public/$1 [L,R=301]
+# Redireciona todas as requisições que não forem arquivos ou diretórios existentes
+# para a pasta /public, sem alterar a URL no navegador
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Impede listagem de diretórios (navegação por URL)
+Options -Indexes
+
+# Bloqueia acesso direto a arquivos PHP na raiz ou pastas internas
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Segurança básica adicional
+AddDefaultCharset UTF-8
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
