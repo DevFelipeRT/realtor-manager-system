@@ -3,9 +3,5 @@ RewriteEngine On
 RewriteRule ^$ public/ [L]
 RewriteRule (.*) public/$1 [L]
 
-# Forçar HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 # Definir a página inicial padrão (dentro da pasta public)
 DirectoryIndex index.php
