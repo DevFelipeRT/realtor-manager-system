@@ -1,9 +1,22 @@
+# Ativar o mecanismo de reescrita
+<IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Redirecionamento básico para a pasta public
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ public/$1 [L]
+# Redirecionar todas as solicitações para HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Impede listagem de diretórios
-Options -Indexes
+# Forçar o uso de 'www' no domínio
+RewriteCond %{HTTP_HOST} ^seusite\.com [NC]
+RewriteRule ^(.*)$ https://www.seusite.com/$1 [L,R=301]
+</IfModule>
+
+# Definir a página inicial padrão
+DirectoryIndex index.php index.html index.htm
+
+# Aumentar os limites do PHP
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value memory_limit 256M
+php_value max_execution_time 300
+php_value max_input_time 300
