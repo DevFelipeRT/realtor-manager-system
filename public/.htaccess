@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /projetos/realtor-system/public/
+
+# Redireciona requisições amigáveis para index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

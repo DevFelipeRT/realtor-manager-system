@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Redireciona qualquer requisição que não comece com /public para a pasta /public
+RewriteCond %{REQUEST_URI} !^/projetos/realtor-system/public/
+RewriteRule ^(.*)$ /projetos/realtor-system/public/$1 [L,R=301]
