@@ -1,6 +1,6 @@
 # Real Estate Agent Management System
 
-This is a web system developed to assist real estate agents in managing their activities and properties.
+This is a web-based application designed to manage real estate agents efficiently. It enables users to register, display, update, and remove agent records, including essential details such as full name, CPF (Brazilian tax identification number), and CRECI credentials (license number, state, and category).
 
 ## Technologies Used
 
