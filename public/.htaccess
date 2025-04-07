@@ -1,5 +1,11 @@
 RewriteEngine On
 
+# Permite o acesso a arquivos PHP nesta pasta
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
 # Redireciona requisições amigáveis para index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

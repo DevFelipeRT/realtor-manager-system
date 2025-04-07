@@ -3,11 +3,8 @@ RewriteEngine On
 # Impede listagem de diretórios (navegação por URL)
 Options -Indexes
 
-# Segurança básica adicional
+# Configuração de charset
 AddDefaultCharset UTF-8
-Header set X-Content-Type-Options "nosniff"
-Header set X-Frame-Options "SAMEORIGIN"
-Header set X-XSS-Protection "1; mode=block"
 
 # Bloqueia acesso a arquivos PHP, exceto os que estão na pasta public
 RewriteCond %{THE_REQUEST} \.php [NC]
