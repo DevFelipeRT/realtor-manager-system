@@ -8,8 +8,8 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Forçar WWW (opcional, substitua 'seudominio.com' pelo seu domínio real)
-RewriteCond %{HTTP_HOST} ^seudominio\.com [NC]
-RewriteRule ^(.*)$ https://www.seudominio.com/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^devfelipert\.com.br [NC]
+RewriteRule ^(.*)$ https://www.devfelipert.com.br/$1 [L,R=301]
 
 # Definir a página inicial padrão (dentro da pasta public)
 DirectoryIndex index.php
