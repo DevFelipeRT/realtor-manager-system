@@ -6,8 +6,8 @@
             <div class="footer-content">
                 <!-- Informações de contato -->
                 <div class="contact-info">
-                    <p>Email: contato@exemplo.com</p>
-                    <p>Telefone: (11) 1234-5678</p>
+                    <p>Email: <?= CONTACT_EMAIL ?></p>
+                    <p>Telefone: <?= CONTACT_PHONE ?></p>
                 </div>
     
                 <!-- Informações da aplicação -->

@@ -19,6 +19,12 @@
     // APP_DESCRIPTION
     $appDescription = 'Aplicação para gerenciamento de corretores de imóveis, com controle de dados pessoais e registro profissional.';
 
+    // CONTACT_EMAIL
+    $contactEmail = 'ruizfelipefr@outlook.com';
+
+    // CONTACT_PHONE
+    $contactPhone = '+55 11 97361-3744';
+
 // Caminhos da aplicação
     // BASE_PATH
     $basePath = dirname(__DIR__);
@@ -96,6 +102,8 @@ define('APP_NAME', $appName);
 define('APP_VERSION', $appVersion);
 define('APP_AUTHOR', $appAuthor);
 define('APP_DESCRIPTION', $appDescription);
+define('CONTACT_EMAIL', $contactEmail);
+define('CONTACT_PHONE', $contactPhone);
 
 define('BASE_PATH', $basePath);
 define('APP_PATH', $appPath);
