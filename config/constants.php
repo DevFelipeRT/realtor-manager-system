@@ -35,7 +35,7 @@
     $publicPath = dirname(__DIR__) . '/public';
 
     // JAVASCRIPT_PATH
-    $javascriptPath = '/Projetos/realtor-system/public/assets/js';
+    $javascriptPath = dirname(__DIR__) . '/public/assets/js';
 
     // TEMPLATES_PATH
     $templatesPath = dirname(__DIR__) . '/public/assets/templates';
