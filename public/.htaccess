@@ -1,8 +1,8 @@
-# Ativar o mecanismo de reescrita de URL
+# Ativar o mecanismo de reescrita para rotas internas
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Redireciona todas as requisições que não sejam arquivos ou pastas reais para index.php
+    # Redireciona todas as requisições para index.php, exceto arquivos e diretórios reais
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.php [QSA,L]
@@ -10,3 +10,6 @@
 
 # Impedir listagem de diretórios
 Options -Indexes
+
+# Definir index padrão
+DirectoryIndex index.php
