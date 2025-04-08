@@ -21,6 +21,22 @@
     // CONTACT_PHONE
     $contactPhone = '+55 11 97361-3744';
 
+// URLs do aplicativo
+    $scheme = 'https';
+    $host   = $_SERVER['HTTP_HOST'];
+
+    // BASE_URL
+    $baseUrl = $scheme . '://' . $host;
+
+    // IMAGES_URL
+    $imagesUrl = $baseUrl . '/assets/images/';
+
+    // CSS_URL
+    $cssUrl = $baseUrl . '/assets/css/';
+
+    // JAVASCRIPT_URL
+    $javascriptUrl = $baseUrl . '/assets/js/';
+
 // Caminhos da aplicação
     // BASE_PATH
     $basePath = dirname(__DIR__);
@@ -98,6 +114,11 @@ define('APP_AUTHOR', $appAuthor);
 define('APP_DESCRIPTION', $appDescription);
 define('CONTACT_EMAIL', $contactEmail);
 define('CONTACT_PHONE', $contactPhone);
+
+define('BASE_URL', $baseUrl);
+define('IMAGES_URL', $imagesUrl);
+define('CSS_URL', $cssUrl);
+define('JAVASCRIPT_URL', $javascriptUrl);
 
 define('BASE_PATH', $basePath);
 define('APP_PATH', $appPath);
