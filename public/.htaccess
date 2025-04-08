@@ -1,0 +1,22 @@
+# Impede listagem de diretórios
+Options -Indexes
+
+# Protege arquivos .htaccess nesta pasta
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Impede execução de scripts PHP em diretórios de assets
+<Directory "assets">
+    <FilesMatch "\.php$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</Directory>
+
+# Cabeçalhos de segurança reforçados
+<IfModule mod_headers.c>
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self';"
+</IfModule>
