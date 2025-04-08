@@ -23,6 +23,6 @@
                 </div>
         </div>
     </footer>
-    <script src="<?= JAVASCRIPT_URL ?>/main.js" type="module" defer></script>
+    <script src="<?= JAVASCRIPT_URL ?>main.js" type="module" defer></script>
 </body>
 </html>
