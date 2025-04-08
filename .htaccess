@@ -22,7 +22,7 @@ Options -Indexes
     Require all denied
 </FilesMatch>
 
-# Segurança adicional via cabeçalhos HTTP
+<!-- # Segurança adicional via cabeçalhos HTTP
 <IfModule mod_headers.c>
     Header always append X-Frame-Options "SAMEORIGIN"
     Header set X-Content-Type-Options "nosniff"
@@ -33,4 +33,4 @@ Options -Indexes
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
+</IfModule> -->
