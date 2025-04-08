@@ -90,10 +90,8 @@
     $realtorsCommentCreci = 'Registro CRECI do corretor';
 
 
-// Definição das constantes
+// Definição das constantes do sistema
 
-
-define('DATABASE_NAME', $databaseName);
 define('APP_NAME', $appName);
 define('APP_VERSION', $appVersion);
 define('APP_AUTHOR', $appAuthor);
