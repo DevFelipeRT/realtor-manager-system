@@ -14,7 +14,7 @@
             <!-- Navigation -->
             <nav>
                 <ul>
-                    <li><div class="corner-left"></div><a href="index.php">Início</a><div class="corner-right"></div></li>
+                    <li><div class="corner-left"></div><a href="/">Início</a><div class="corner-right"></div></li>
                 </ul>
             </nav>
         </div>
