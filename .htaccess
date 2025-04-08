@@ -9,7 +9,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ public/$1 [L]
 
-# Impede listagem de diretórios
+<!-- # Impede listagem de diretórios
 Options -Indexes
 
 # Bloqueia acesso a arquivos e pastas sensíveis
@@ -22,7 +22,7 @@ Options -Indexes
     Require all denied
 </FilesMatch>
 
-<!-- # Segurança adicional via cabeçalhos HTTP
+# Segurança adicional via cabeçalhos HTTP
 <IfModule mod_headers.c>
     Header always append X-Frame-Options "SAMEORIGIN"
     Header set X-Content-Type-Options "nosniff"
