@@ -1,33 +1,40 @@
-# Ativa o mecanismo de reescrita
+#############################################
+#  Raiz do domínio (public_html)
+#############################################
+
+# 1) Reescrita de URL
 RewriteEngine On
 RewriteBase /
 
-# Redireciona tudo para a pasta public, exceto se for arquivo ou diretório real
+# 1a. Acessos à raiz (“/”) vão direto ao index da pasta public
+RewriteRule ^$ public/index.php [L]
+
+# 1b. Demais URLs que não sejam arquivo ou diretório real
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ public/$1 [L]
 
-# Impede listagem de diretórios
+# 2) Segurança – impede listagem de diretórios
 Options -Indexes
 
-# Bloqueia acesso a arquivos e pastas sensíveis
+# 3) Bloqueio de arquivos sensíveis
 <FilesMatch "(^\.env|composer\.(json|lock)|\.git|\.htaccess|php\.ini|README\.md|LICENSE)">
     Require all denied
 </FilesMatch>
 
-# Bloqueia arquivos ocultos (ex: .git, .env)
+# 4) Bloqueio de qualquer arquivo/pasta oculta (nome iniciando com ponto)
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>
 
-# Segurança adicional via cabeçalhos HTTP
+# 5) Cabeçalhos de segurança
 <IfModule mod_headers.c>
     Header always append X-Frame-Options "SAMEORIGIN"
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-XSS-Protection "1; mode=block"
+    Header set    X-Content-Type-Options "nosniff"
+    Header set    X-XSS-Protection "1; mode=block"
 </IfModule>
 
-# Redireciona para HTTPS, se necessário
+# 6) Força HTTPS (remova se o painel já fizer isso)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

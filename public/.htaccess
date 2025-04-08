@@ -1,23 +1,30 @@
-# Impede listagem de diretórios
+#############################################
+#  Pasta pública (public/)
+#############################################
+
+# 1) Arquivo padrão explicitamente definido
+DirectoryIndex index.php
+
+# 2) Impede listagem
 Options -Indexes
 
-# Permite apenas o acesso ao index.php diretamente
-<FilesMatch "^(index\.php)$">
-    Require all granted
-</FilesMatch>
-
-# Bloqueia qualquer outro script PHP ou arquivos ocultos
-<FilesMatch "\.(php|phar)$">
-    Require all denied
-</FilesMatch>
-
+# 3) Bloqueia qualquer arquivo/pasta oculta
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>
 
-# Segurança adicional via cabeçalhos HTTP
+# 4) (Opcional) Se houver outros .php aqui, bloqueie‑os
+#    Caso só exista o index.php, você pode omitir esta seção.
+<FilesMatch "\.php$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "^index\.php$">
+    Require all granted
+</FilesMatch>
+
+# 5) Cabeçalhos de segurança adicionais
 <IfModule mod_headers.c>
     Header always append X-Frame-Options "SAMEORIGIN"
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-XSS-Protection "1; mode=block"
+    Header set    X-Content-Type-Options "nosniff"
+    Header set    X-XSS-Protection "1; mode=block"
 </IfModule>
