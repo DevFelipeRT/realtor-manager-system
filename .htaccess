@@ -1,14 +1,5 @@
-# Ativar o mecanismo de reescrita
 RewriteEngine On
 
-# 1. Redirecionar para HTTPS e WWW (redirecionamento externo)
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\.realtor\.devfelipert\.com\.br$ [NC]
-RewriteRule ^(.*)$ https://www.realtor.devfelipert.com.br/$1 [L,R=301]
-
-# 2. Reescrever internamente para a pasta /public (evita loop com a condição)
+# Evita redirecionamento se já estiver em /public
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ public/$1 [L]
-
-# 3. Definir o arquivo index padrão
-DirectoryIndex index.php
