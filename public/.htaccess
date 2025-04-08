@@ -2,27 +2,38 @@
 #  Pasta pública (public/)
 #############################################
 
-# 1) Arquivo padrão explicitamente definido
+# Arquivo padrão
 DirectoryIndex index.php
 
-# 2) Impede listagem
+# Impede listagem de diretórios
 Options -Indexes
 
-# 3) Bloqueia qualquer arquivo/pasta oculta
+# --- 1) BLOQUEIOS ---------------------------------
+
+# Bloqueia QUALQUER arquivo/pasta oculta (.git, .env, etc.)
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>
 
-# 4) (Opcional) Se houver outros .php aqui, bloqueie‑os
-#    Caso só exista o index.php, você pode omitir esta seção.
+# Bloqueia todos os scripts PHP
 <FilesMatch "\.php$">
     Require all denied
 </FilesMatch>
-<FilesMatch "^index\.php$">
+
+# --- 2) EXCEÇÕES ----------------------------------
+
+# Libera somente o index.php
+<Files "index.php">
+    Require all granted
+</Files>
+
+# Garante acesso a arquivos estáticos usuais
+<FilesMatch "\.(js|css|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|otf)$">
     Require all granted
 </FilesMatch>
 
-# 5) Cabeçalhos de segurança adicionais
+# --- 3) CABEÇALHOS DE SEGURANÇA -------------------
+
 <IfModule mod_headers.c>
     Header always append X-Frame-Options "SAMEORIGIN"
     Header set    X-Content-Type-Options "nosniff"
