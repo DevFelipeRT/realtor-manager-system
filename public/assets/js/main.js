@@ -10,7 +10,7 @@
       }
     }
     if (window.matchMedia('(max-width: 767px)').matches) {
-      applyScale(0.8);
+      applyScale(0.6);
     }
     window.addEventListener('orientationchange', () => applyScale(0.8));
   })();
