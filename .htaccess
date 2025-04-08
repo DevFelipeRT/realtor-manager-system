@@ -1,8 +1,8 @@
 # Ativa o mecanismo de reescrita
 RewriteEngine On
 
-<!-- # Define o diretório base como raiz
-RewriteBase / -->
+# Define o diretório base como raiz
+RewriteBase /
 
 # Redireciona tudo para a pasta public, exceto se for um arquivo ou diretório existente
 RewriteCond %{REQUEST_FILENAME} !-f
