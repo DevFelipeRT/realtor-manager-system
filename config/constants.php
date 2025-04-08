@@ -22,7 +22,7 @@
     $contactPhone = '+55 11 97361-3744';
 
 // URLs do aplicativo
-    $scheme = 'https';
+    $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
     $host   = $_SERVER['HTTP_HOST'];
 
     // BASE_URL
