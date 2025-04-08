@@ -9,3 +9,6 @@ RewriteRule ^(.*)$ https://www.realtor.devfelipert.com.br/$1 [L,R=301]
 # 2. Reescrever internamente para a pasta /public (evita loop com a condição)
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ public/$1 [L]
+
+# 3. Definir o arquivo index padrão
+DirectoryIndex index.php
