@@ -1,10 +1,6 @@
 <?php
 
-// Descrição: Este arquivo contém as variáveis de ambiente e constantes do sistema.
-
-// Banco de dados
-    // DATABASE_NAME
-    $databaseName = 'db_realtors';
+// Descrição: Este arquivo contém as constantes do sistema.
 
 // Informações do aplicativo
     // APP_NAME
