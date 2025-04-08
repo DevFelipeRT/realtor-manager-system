@@ -7,6 +7,7 @@
     <!-- Load Page Title -->
     <title><?php echo htmlspecialchars(APP_NAME . ' | ' . $headerTitle, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" sizes="512x512" href="<?= IMAGES_URL ?>realtor-system-icon.png">
 </head>
 <body file-name="<?php echo htmlspecialchars($fileName) ?>">
     <header>
