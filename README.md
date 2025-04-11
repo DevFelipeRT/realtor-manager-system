@@ -62,6 +62,10 @@ This is a web-based application designed to manage real estate agents efficientl
   - **Responsive Interface**: Features a responsive interface with a basic layout structure, providing a consistent user experience across different devices.
   - **Project Organization**: Maintains a clean project organization, ideal for learning purposes and portfolio inclusion.
 
+## Version
+
+- **Current Version**: 1.0.0
+
 ## License
 
 This project is licensed under the MIT License.
@@ -69,4 +73,4 @@ This project is licensed under the MIT License.
 ## References
 
 - [PHP Documentation](https://www.php.net/docs.php)
-- [MySQL Documentation](https://dev.mysql.com/doc/) 
+- [MySQL Documentation](https://dev.mysql.com/doc/)
