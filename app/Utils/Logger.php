@@ -24,7 +24,7 @@ class Logger {
         self::LOG_LEVEL_NOTICE
     ];
 
-    public function __construct(string $logFilePath, string $logLevel = self::LOG_LEVEL_INFO) {
+    public function __construct(string $logFilePath = LOGS_PATH, string $logLevel = self::LOG_LEVEL_INFO) {
         $this->logFilePath = $logFilePath;
         $this->setLogLevel($logLevel);
         $this->logDateTime = new \DateTime();

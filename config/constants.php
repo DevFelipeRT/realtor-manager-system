@@ -24,16 +24,26 @@
 // URLs do aplicativo
     // Detecta o esquema de protocolo
     $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+
     // Captura o host atual
     $host = $_SERVER['HTTP_HOST'];
+
     // Extrai o caminho da URL até o diretório onde está o index.php
     $uri = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 
-    // BASE_URL
-    $baseUrl = $scheme . '://' . $host;
+    // Remove "/public" do final, se estiver presente
+    if (str_ends_with($uri, '/public')) {
+        $uri = substr($uri, 0, -7); // Remove exatamente "/public"
+    }
 
-    // PUBLIC_URL
-    $publicUrl = $baseUrl . $uri . '/';
+    // BASE_URL – URL visível no navegador, usada para montar todos os links do sistema
+    $baseUrl = $scheme . '://' . $host . $uri;
+
+    // PUBLIC_URL – caminho até a pasta /public, útil para assets absolutos (JS, CSS)
+    $publicUrl = rtrim($baseUrl, '/') . '/public/';
+
+    // INDEX_URL – caminho direto para o index.php, se necessário
+    $indexUrl = rtrim($baseUrl, '/') . '/index.php';
 
     // IMAGES_URL
     $imagesUrl = $baseUrl . '/assets/images/';
@@ -124,6 +134,7 @@ define('CONTACT_PHONE', $contactPhone);
 
 define('BASE_URL', $baseUrl);
 define('PUBLIC_URL', $publicUrl);
+define('INDEX_URL', $indexUrl);
 define('IMAGES_URL', $imagesUrl);
 define('CSS_URL', $cssUrl);
 define('JAVASCRIPT_URL', $javascriptUrl);
