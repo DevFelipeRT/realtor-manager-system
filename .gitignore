@@ -23,6 +23,7 @@ logs/
 # Arquivos de ambiente
 .env
 .env.*
+.htaccess
 
 # Composer (caso venha a usar futuramente)
 vendor/
