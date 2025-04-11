@@ -18,9 +18,7 @@ if (isset($_SESSION['session_data']['update_form_data'])) {
     <section class="section form-section">
         <h2 id="form-title">Cadastro de Novo Corretor</h2>
 
-        <form id="register-realtor-form" action="index.php" method="POST">
-            <input type="hidden" name="action" value="add-realtor">
-            <input type="hidden" name="controller" value="realtor">
+        <form id="register-realtor-form" action="<?= BASE_URL ?>/realtor/add" method="POST">
             <input type="hidden" id="realtor_id" name="realtor_id" value="<?= $session->getData($formDataName)['realtor_id'] ?? '' ?>">
 
             <label for="name">Nome completo:</label>
@@ -123,9 +121,7 @@ if (isset($_SESSION['session_data']['update_form_data'])) {
                                     >
                                         Editar
                                     </button>
-                                    <form action="index.php" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este corretor?');">
-                                        <input type="hidden" name="action" value="delete-realtor">
-                                        <input type="hidden" name="controller" value="realtor">
+                                    <form action="<?= BASE_URL ?>/realtor/delete" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este corretor?');">
                                         <input type="hidden" name="id" value="<?= htmlspecialchars($realtor["realtor_id"]) ?>">
                                         <button type="submit" class="btn btn-form btn-danger">Excluir</button>
                                     </form>

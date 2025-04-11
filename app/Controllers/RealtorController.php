@@ -86,7 +86,7 @@ class RealtorController extends Controller {
             }
 
             if ($this->session->hasMessages('error')) {
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
 
@@ -95,7 +95,7 @@ class RealtorController extends Controller {
             } catch (\Throwable $e) {
                 $this->logger->error('Erro ao combinar dados do CRECI: ' . $e->getMessage());
                 $this->session->addMessage('error', ['register-realtor-form-creci' => 'Erro ao processar dados do CRECI.']);
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
 
@@ -109,9 +109,12 @@ class RealtorController extends Controller {
             } catch (\Throwable $e) {
                 $this->logger->error('Erro ao cadastrar corretor: ' . $e->getMessage());
                 $this->session->addMessage('error', ['register-realtor-form' => 'Erro ao cadastrar corretor.']);
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
+
+            header("Location: " . BASE_URL . "/"); // Usando a rota principal
+            exit;
         }
     }
 
@@ -171,7 +174,7 @@ class RealtorController extends Controller {
             }
 
             if ($this->session->hasMessages('error')) {
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
 
@@ -180,7 +183,7 @@ class RealtorController extends Controller {
             } catch (\Throwable $e) {
                 $this->logger->error('Erro ao combinar dados do CRECI: ' . $e->getMessage());
                 $this->session->addMessage('error', ['update-realtor-form-creci' => 'Erro ao processar dados do CRECI.']);
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
 
@@ -195,9 +198,12 @@ class RealtorController extends Controller {
             } catch (\Throwable $e) {
                 $this->logger->error('Erro ao atualizar cadastro: ' . $e->getMessage());
                 $this->session->addMessage('error', ['update-realtor-form' => 'Erro ao atualizar cadastro.']);
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
+
+            header("Location: " . BASE_URL . "/"); // Usando a rota principal
+            exit;
         }
     }
 
@@ -210,7 +216,7 @@ class RealtorController extends Controller {
                 $id = $this->validateId($id);
             } catch (\InvalidArgumentException $e) {
                 $this->session->addMessage('error', ['realtor-table' => $e->getMessage()]);
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
 
@@ -219,9 +225,12 @@ class RealtorController extends Controller {
             } catch (\Throwable $e) {
                 $this->logger->error('Erro ao excluir corretor: ' . $e->getMessage());
                 $this->session->addMessage('error', ['realtor-table' => 'Erro ao excluir corretor.']);
-                header('Location: index.php?action=realtors_manager');
+                header("Location: " . BASE_URL . "/"); // Usando a rota principal
                 exit;
             }
+
+            header("Location: " . BASE_URL . "/"); // Usando a rota principal
+            exit;
         }
     }
 }
