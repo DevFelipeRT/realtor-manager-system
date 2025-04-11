@@ -23,14 +23,15 @@ function executarRotinaDeInicializacao() {
     const formElements = selecionarElementosFormulario();
     const {
         form, realtorIdField, nameField, cpfField, creciNumberField,
-        creciUfField, creciTypeField, formTitle, formSubmit
+        creciUfField, creciTypeField, formTitle, formSubmit,
+        actionInput, controllerInput
     } = formElements;
 
     // Verifica se os elementos obrigatórios estão presentes
     verificarElementosObrigatorios(formElements);
 
     // Configura o formulário com base nas mensagens de atualização/erro
-    configurarFormularioComMensagens({ formTitle, formSubmit });
+    configurarFormularioComMensagens({ actionInput, controllerInput, formTitle, formSubmit });
 
     // Configura os botões de edição
     configurarBotoesEdicao(formElements);
@@ -40,7 +41,8 @@ function executarRotinaDeInicializacao() {
 function verificarElementosObrigatorios(formElements) {
     const elementNames = [
         'form', 'realtorIdField', 'nameField', 'cpfField', 'creciNumberField',
-        'creciUfField', 'creciTypeField', 'formTitle', 'formSubmit'
+        'creciUfField', 'creciTypeField', 'formTitle', 'formSubmit',
+        'actionInput', 'controllerInput'
     ];
     elementNames.forEach(name => {
         if (!formElements[name]) {
@@ -50,11 +52,11 @@ function verificarElementosObrigatorios(formElements) {
 }
 
 // Configura o formulário com base nas mensagens de atualização/erro
-function configurarFormularioComMensagens({ formTitle, formSubmit }) {
+function configurarFormularioComMensagens({ actionInput, controllerInput, formTitle, formSubmit }) {
     const updateMessages = document.querySelectorAll('.message p[id^="update"]');
     if (updateMessages.length > 0) {
         console.log("Mensagem de atualização/erro detectada:", updateMessages[0].id);
-        atualizarFormularioParaEdicao({ formTitle, formSubmit });
+        atualizarFormularioParaEdicao({ actionInput, controllerInput, formTitle, formSubmit });
         adicionarBotaoCancelar(formSubmit);
     } else {
         console.log("Nenhuma mensagem de atualização encontrada.");
@@ -85,15 +87,18 @@ function selecionarElementosFormulario() {
         creciTypeField: document.getElementById('creci_type'),
         formTitle: document.getElementById('form-title'),
         formSubmit: document.getElementById('form-submit'),
+        actionInput: document.querySelector('input[name="action"]'),
+        controllerInput: document.querySelector('input[name="controller"]'),
         formSection: document.querySelector('.form-section')
     };
 }
 
 function restaurarFormulario() {
-    const { form, formTitle, formSubmit } = selecionarElementosFormulario();
+    const { form, actionInput, controllerInput, formTitle, formSubmit } = selecionarElementosFormulario();
     redefinirValoresInputs(); // Redefine os valores dos inputs
     redefinirValoresSelects(); // Redefine os valores dos selects
-    form.action = form.action.replace(/\/realtor\/update$/, '/realtor/add'); // Restaura o action do formulário
+    actionInput.value = 'add-realtor';
+    controllerInput.value = 'realtor';
     formTitle.textContent = 'Cadastro de Novo Corretor';
     formSubmit.value = 'Cadastrar Corretor';
 
@@ -134,8 +139,9 @@ function ocultarMensagens() {
 
 function registrarEventosDeEdicao(editButtons, formElements) {
     const {
-        form, realtorIdField, nameField, cpfField, creciNumberField,
-        creciUfField, creciTypeField, formTitle, formSubmit
+        realtorIdField, nameField, cpfField, creciNumberField,
+        creciUfField, creciTypeField, formTitle, formSubmit,
+        actionInput, controllerInput
     } = formElements;
 
     editButtons.forEach(button => {
@@ -153,7 +159,7 @@ function registrarEventosDeEdicao(editButtons, formElements) {
                 creciNumberField, creciUfField, creciTypeField
             });
 
-            atualizarFormularioParaEdicao({ form, formTitle, formSubmit });
+            atualizarFormularioParaEdicao({ actionInput, controllerInput, formTitle, formSubmit });
             ocultarMensagens();
             adicionarBotaoCancelar(formSubmit);
         });
@@ -199,8 +205,9 @@ function preencherFormulario({
     creciTypeField.setAttribute('autocomplete', 'off');
 }
 
-function atualizarFormularioParaEdicao({ form, formTitle, formSubmit }) {
-    form.action = form.action.replace(/\/realtor\/add$/, '/realtor/update'); // Atualiza o action do formulário
+function atualizarFormularioParaEdicao({ actionInput, controllerInput, formTitle, formSubmit }) {
+    actionInput.value = 'update-realtor';
+    controllerInput.value = 'realtor';
     formTitle.textContent = 'Editar Cadastro';
     formSubmit.value = 'Atualizar Cadastro';
 }

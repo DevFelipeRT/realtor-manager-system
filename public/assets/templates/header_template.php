@@ -15,7 +15,7 @@
             <!-- Navigation -->
             <nav>
                 <ul>
-                    <li><div class="corner-left"></div><a href="<?= BASE_URL ?>/">Início</a><div class="corner-right"></div></li>
+                    <li><div class="corner-left"></div><a href="<?= PUBLIC_URL ?>">Início</a><div class="corner-right"></div></li>
                 </ul>
             </nav>
         </div>
