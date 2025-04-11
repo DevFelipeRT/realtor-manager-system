@@ -22,11 +22,18 @@
     $contactPhone = '+55 11 97361-3744';
 
 // URLs do aplicativo
-    $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-    $host   = $_SERVER['HTTP_HOST'];
+    // Detecta o esquema de protocolo
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    // Captura o host atual
+    $host = $_SERVER['HTTP_HOST'];
+    // Extrai o caminho da URL até o diretório onde está o index.php
+    $uri = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 
     // BASE_URL
     $baseUrl = $scheme . '://' . $host;
+
+    // PUBLIC_URL
+    $publicUrl = $baseUrl . $uri . '/';
 
     // IMAGES_URL
     $imagesUrl = $baseUrl . '/assets/images/';
@@ -116,6 +123,7 @@ define('CONTACT_EMAIL', $contactEmail);
 define('CONTACT_PHONE', $contactPhone);
 
 define('BASE_URL', $baseUrl);
+define('PUBLIC_URL', $publicUrl);
 define('IMAGES_URL', $imagesUrl);
 define('CSS_URL', $cssUrl);
 define('JAVASCRIPT_URL', $javascriptUrl);
